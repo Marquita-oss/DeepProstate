@@ -1,0 +1,382 @@
+# Medical Imaging Workstation - Configuración Principal
+# Configuración para aplicación de análisis de cáncer prostático
+# Versión: 2.5.0
+
+# =============================================================================
+# CONFIGURACIÓN GENERAL DE LA APLICACIÓN
+# =============================================================================
+application:
+  name: "Medical Imaging Workstation"
+  version: "1.0.0"
+  debug_mode: false
+  log_level: "WARNING"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  autosave_interval_minutes: 5
+  language: "en"  # en, es, fr, de
+  
+# =============================================================================
+# RUTAS DEL SISTEMA
+# =============================================================================
+storage_path: "./medical_data"
+models_path: "./models"
+temp_path: "./temp"
+exports_path: "./exports"
+logs_path: "./logs"
+backups_path: "./backups"
+config_path: "./config"
+
+# =============================================================================
+# CONFIGURACIÓN DE REPOSITORIO Y ALMACENAMIENTO
+# =============================================================================
+repository:
+  type: "file_system"  # file_system, database
+  index_cache_size: 1000
+  enable_compression: true
+  backup_frequency_hours: 24
+  max_studies_in_memory: 100  # Increased to remove potential constraint
+  dicom_validation: "strict"  # strict, permissive, off
+
+# =============================================================================
+# CONFIGURACIÓN DE MODELOS DE IA
+# =============================================================================
+ai_models:
+  # nnUNet para segmentación prostática
+  nnunet_model_path: "./models/nnunet_prostate"
+  confidence_threshold: 0.7
+  batch_size: 1
+  use_gpu: true
+  gpu_memory_fraction: 0.8
+  model_precision: "float32"  # float16, float32
+
+  # Configuración de salida de predicciones
+  predictions_output:
+    base_path: "./predictions"  # Directorio base para salidas de nnUNet
+    auto_create_dirs: true  # Crear automáticamente directorios si no existen
+    organize_by_task: true  # Organizar por tarea (prostate_whole, zones, lesions)
+    save_probabilities: false  # Guardar mapas de probabilidad (requiere más espacio)
+    save_npz: false  # Guardar archivos .npz con probabilidades
+    cleanup_after_conversion: true  # Limpiar archivos .nii.gz temporales después de convertir a máscaras
+  
+  # Configuración de preprocesamiento
+  preprocessing:
+    normalize_intensity: true
+    resample_spacing: [1.0, 1.0, 1.0]  # mm
+    crop_to_roi: true
+    pad_size: [128, 128, 64]
+    intensity_clipping:
+      ct_range: [-1000, 1000]  # HU
+      mri_percentiles: [0.5, 99.5]
+  
+  # Configuración de postprocesamiento
+  # NOTA: Estas opciones son aplicadas automáticamente cuando
+  # apply_refinement=True en AIAnalysisRequest
+  # TODO: En futuro, permitir override desde Advanced Settings UI
+  postprocessing:
+    remove_small_objects: true
+    min_object_size: 100  # voxels
+    smooth_contours: true
+    fill_holes: true
+    morphological_operations:
+      enable_closing: true
+      enable_opening: false
+      kernel_size: 3
+
+# =============================================================================
+# CONFIGURACIÓN DE VISUALIZACIÓN
+# =============================================================================
+visualization:
+  default_theme: "dark"  # dark, light
+  font_family: "Segoe UI"
+  font_size: 9
+  
+  max_memory_usage_gb: 4
+  enable_gpu_rendering: true
+  clear_cache_on_low_memory: true
+  
+  default_window_level:
+    CT:
+      soft_tissue: {window: 400, level: 40}
+      bone: {window: 1500, level: 300}
+      lung: {window: 1600, level: -600}
+      liver: {window: 150, level: 60}
+    MRI:
+      t1: {window: 600, level: 300}
+      t2: {window: 1000, level: 500}
+      flair: {window: 800, level: 400}
+      dwi: {window: 1200, level: 600}
+  
+  rendering_quality: "high"  # low, medium, high, ultra
+  anti_aliasing: true
+  texture_filtering: true
+  
+  volume_rendering:
+    sample_distance: 0.5  # Menor = mejor calidad, más lento
+    enable_shading: true
+    gradient_opacity: true
+    ambient_lighting: 0.4
+    diffuse_lighting: 0.6
+    specular_lighting: 0.2
+    specular_power: 30
+    
+  slice_rendering:
+    interpolation: "linear"  # nearest, linear, cubic
+    enable_crosshairs: true
+    show_annotations: true
+    overlay_opacity: 0.4
+
+# =============================================================================
+# CONFIGURACIÓN DE HERRAMIENTAS DE MEDICIÓN
+# =============================================================================
+measurement_tools:
+  default_units: "mm"
+  precision_decimals: 2
+  line_thickness: 2
+  text_size: 12
+  auto_save_measurements: true
+  
+  colors:
+    distance: "#FFFF00"      # Amarillo
+    angle: "#00FF00"         # Verde
+    roi: "#FF00FF"           # Magenta
+    volume: "#00FFFF"        # Cian
+    
+  distance_tool:
+    show_intermediate_points: true
+    snap_to_pixel_center: false
+  
+  angle_tool:
+    show_arc: true
+    arc_radius: 20
+  
+  roi_tool:
+    enable_freehand: true
+    simplify_contours: true
+    min_area_mm2: 1.0
+
+# =============================================================================
+# CONFIGURACIÓN DE SEGMENTACIÓN
+# =============================================================================
+segmentation:
+  default_opacity: 0.4
+  smooth_surfaces: true
+  surface_smoothing_iterations: 15
+  
+  enable_editing: true
+  max_undo_levels: 20
+  auto_validate: true
+  
+  region_colors:
+    prostate_whole: "#CC9966"           # Marrón claro
+    prostate_peripheral_zone: "#66CC66" # Verde
+    prostate_transition_zone: "#6666CC" # Azul
+    prostate_central_zone: "#CC6666"    # Rojo claro
+    suspicious_lesion: "#FFCC00"        # Amarillo
+    confirmed_cancer: "#FF3333"         # Rojo
+    benign_hyperplasia: "#99CC99"       # Verde claro
+    urethra: "#CC66CC"                  # Magenta
+    seminal_vesicles: "#CCCC66"         # Amarillo verdoso
+  
+  validation:
+    enable_size_validation: true
+    min_lesion_size_mm3: 5.0
+    max_prostate_size_mm3: 150000.0
+    enable_anatomical_constraints: true
+
+# =============================================================================
+# CONFIGURACIÓN DE EXPORTACIÓN
+# =============================================================================
+export:
+  default_format: "nifti"  # nifti, dicom, stl, obj
+  include_metadata: true
+  compress_exports: true
+  export_measurements: true
+  anonymize_exports: false
+  
+  nifti:
+    data_type: "float32"
+    compression: "gzip"
+  
+  dicom:
+    preserve_original_metadata: true
+    generate_secondary_capture: true
+  
+  stl:
+    binary_format: true
+    smooth_surface: true
+  
+  anonymization:
+    remove_patient_info: true
+    remove_study_info: false
+    remove_physician_info: true
+    hash_ids: true
+
+# =============================================================================
+# CONFIGURACIÓN DE RED (PARA INTEGRACIONES FUTURAS)
+# =============================================================================
+network:
+  enable_dicom_server: false
+  dicom_port: 11112
+  dicom_aet: "MEDICAL_WS"
+  max_associations: 10
+  
+  enable_web_interface: false
+  web_port: 8080
+  ssl_enabled: false
+  cors_enabled: true
+  
+  enable_api_server: false
+  api_port: 8081
+  api_key_required: true
+
+# =============================================================================
+# CONFIGURACIÓN DE SEGURIDAD Y PRIVACIDAD
+# =============================================================================
+security:
+  require_user_authentication: false
+  session_timeout_minutes: 120
+  max_failed_login_attempts: 3
+  
+  audit_user_actions: true
+  audit_ai_predictions: true
+  audit_data_access: true
+  
+  encrypt_sensitive_data: true
+  anonymize_logs: true
+  auto_delete_temp_files: true
+  temp_file_retention_hours: 24
+
+# =============================================================================
+# CONFIGURACIÓN DE RENDIMIENTO
+# =============================================================================
+performance:
+  max_concurrent_operations: 4
+  max_concurrent_ai_operations: 1
+  thread_pool_size: 8
+  
+  cache_size_mb: 512
+  preload_adjacent_slices: 3
+  lazy_load_volumes: true
+  
+  memory_management:
+    enable_garbage_collection: true
+    gc_threshold_mb: 1024
+    clear_cache_on_memory_pressure: true
+    max_texture_size_mb: 256
+  
+  image_loading:
+    use_memory_mapping: true
+    parallel_loading: true
+    compression_in_memory: false
+  
+  rendering:
+    use_level_of_detail: true
+    adaptive_sampling: true
+    frustum_culling: true
+
+# =============================================================================
+# CONFIGURACIÓN ESPECÍFICA DE ANÁLISIS PROSTÁTICO
+# =============================================================================
+prostate_analysis:
+  default_protocols:
+    t2w_protocol:
+      sequence_name: "T2W"
+      plane: "axial"
+      slice_thickness_mm: 3.0
+      spacing_mm: [0.5, 0.5, 3.0]
+    
+    dwi_protocol:
+      sequence_name: "DWI"
+      b_values: [0, 1000, 2000]
+      adc_calculation: true
+      slice_thickness_mm: 3.0
+    
+    dce_protocol:
+      sequence_name: "DCE"
+      temporal_resolution_sec: 5.0
+      contrast_phases: ["pre", "arterial", "venous", "delayed"]
+  
+  pirads_scoring:
+    enable_pirads: true
+    version: "2.1"
+    require_all_sequences: false
+    auto_calculate_scores: true
+    
+    peripheral_zone:
+      primary_sequence: "DWI"
+      secondary_sequence: "T2W"
+    
+    transition_zone:
+      primary_sequence: "T2W"
+      secondary_sequence: "DWI"
+  
+  lesion_detection:
+    min_lesion_size_mm: 5.0
+    confidence_threshold: 0.6
+    enable_size_filtering: true
+    max_lesions_per_zone: 10
+    
+    suspicious_criteria:
+      min_adc_value: 0.0
+      max_adc_value: 1200.0 
+      min_t2_signal_intensity: 0.3
+      enhancement_patterns: ["early", "persistent"]
+  
+  volumetric_analysis:
+    enable_zone_volumetry: true
+    calculate_lesion_burden: true
+    track_temporal_changes: true
+    
+  reporting:
+    auto_generate_reports: true
+    include_screenshots: true
+    template_format: "structured"
+    language: "en"
+
+# =============================================================================
+# CONFIGURACIÓN DE LOGGING
+# =============================================================================
+logging:
+  console_output: true
+  file_output: true
+  max_file_size_mb: 10
+  backup_count: 5
+  
+  module_levels:
+    "infrastructure.ui": "WARNING"
+    "infrastructure.visualization": "WARNING"
+    "application.services": "WARNING"
+    "domain": "WARNING"
+    "domain.services": "WARNING"
+    "infrastructure.coordination": "WARNING"
+    "infrastructure.adapters": "WARNING"
+    "vtk": "ERROR"
+    "SimpleITK": "ERROR"
+    "matplotlib": "ERROR"
+    "PIL": "ERROR"
+  
+  format: "%(asctime)s | %(levelname)-8s | %(name)-20s | %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+  
+  medical_audit:
+    enabled: true
+    format: "json"
+    separate_file: true
+    retention_days: 365
+
+# =============================================================================
+# CONFIGURACIÓN DE DESARROLLO Y DEBUGGING
+# =============================================================================
+development:
+  debug_mode: false
+  verbose_logging: false
+  show_debug_info: false
+  production_mode: true
+  
+  mock_ai_responses: false
+  simulate_slow_operations: false
+  enable_performance_monitoring: false
+  
+  enable_profiling: false
+  profile_output_dir: "./profiles"
+  
+  enable_hot_reload: false
+  watch_config_changes: true

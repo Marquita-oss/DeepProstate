@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Read(//home/ronald-marca/Documentos/models/**)",
+      "Bash(rg:*)",
+      "Bash(grep:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(wc:*)",
+      "Bash(done)",
+      "Bash(do echo \"=== Checking usage of: $service ===\")",
+      "Bash(cat:*)",
+      "Bash(python3:*)",
+      "Bash(tree:*)",
+      "Bash(python:*)",
+      "Bash(source:*)",
+      "Read(//home/ronald-marca/Imágenes/Capturas de pantalla/**)",
+      "Bash(awk:*)",
+      "Read(//home/ronald-marca/Escritorio/deep-prostate/**)",
+      "Bash(rm:*)",
+      "Bash(echo:*)",
+      "Bash(/home/ronald-marca/Escritorio/deep-prostate/medical-env/bin/python:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

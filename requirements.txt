@@ -1,0 +1,102 @@
+# DeepProstate - Python Dependencies
+# Medical Imaging Analysis Platform with AI
+# Python 3.8+ required
+
+# ============================================
+# CORE DEPENDENCIES (Required)
+# ============================================
+
+# UI Framework
+PyQt6>=6.4.0
+PyQt6-Qt6>=6.4.0
+
+# Numerical Computing
+numpy>=1.21.0,<2.0.0
+scipy>=1.7.0
+
+# Medical Imaging Core
+pydicom>=2.3.0
+nibabel>=4.0.0
+SimpleITK>=2.2.0
+
+# Image Processing
+scikit-image>=0.19.0
+Pillow>=9.0.0
+
+# System Utilities
+psutil>=5.9.0
+
+# ============================================
+# AI/ML DEPENDENCIES
+# ============================================
+
+# Deep Learning Framework (CPU version by default)
+torch>=2.0.0
+torchvision>=0.15.0
+
+# nnUNet v2 (install separately or from source)
+# pip install nnunetv2
+
+# ============================================
+# 3D VISUALIZATION
+# ============================================
+
+# VTK for 3D rendering
+vtk>=9.2.0
+
+# ============================================
+# DATA PROCESSING
+# ============================================
+
+# File format support
+h5py>=3.7.0
+
+# ============================================
+# UTILITIES
+# ============================================
+
+# Logging and configuration
+python-dotenv>=0.20.0
+
+# Date/time handling
+python-dateutil>=2.8.0
+
+# ============================================
+# DEVELOPMENT DEPENDENCIES (Optional)
+# ============================================
+
+# Testing
+# pytest>=7.0.0
+# pytest-cov>=3.0.0
+# pytest-qt>=4.0.0
+
+# Code Quality
+# pylint>=2.15.0
+# black>=22.0.0
+# mypy>=0.990
+
+# Documentation
+# sphinx>=4.5.0
+# sphinx-rtd-theme>=1.0.0
+
+# ============================================
+# NOTES
+# ============================================
+
+# GPU Support (Optional):
+# For CUDA 11.8:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# For CUDA 12.1:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+# ROCm Support (AMD GPUs):
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm5.6
+
+# nnUNet Installation:
+# git clone https://github.com/MIC-DKFZ/nnUNet.git
+# cd nnUNet
+# pip install -e .
+
+# Installation command:
+# pip install -r requirements.txt

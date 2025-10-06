@@ -1,0 +1,60 @@
+# =============================================================================
+# CONFIGURACIÓN DE MODELOS DE IA - NNUNETV2 
+# =============================================================================
+
+production:
+  # export nnUNet_results="/home/ronald-marca/Documentos/models"
+  nnunet_results_path: "/home/ronald-marca/Documentos/models"
+
+  # Modelos disponibles
+  models:
+    prostate_gland:
+      dataset: "Dataset998_Gland"
+      task_id: 998
+      configuration: "3d_fullres"
+      description: "Segmentación de próstata completa"
+
+    prostate_zones:
+      dataset: "Dataset995_TZ_PZ"
+      task_id: 995
+      configuration: "3d_fullres"
+      description: "Segmentación de zonas TZ/PZ"
+
+    cspca_detection:
+      dataset: "Dataset997_csPCa"
+      task_id: 997
+      configuration: "3d_fullres"
+      description: "Detección de cáncer clínicamente significativo"
+
+  # Configuración de inferencia
+  inference:
+    timeout_seconds: 300
+    save_probabilities: true
+    use_gpu: true
+    batch_size: 1
+
+  # Umbrales de confianza por región anatómica
+  confidence_thresholds:
+    prostate_whole: 0.85
+    peripheral_zone: 0.75
+    transition_zone: 0.75
+    suspicious_lesion: 0.70
+    confirmed_cancer: 0.80
+
+# =============================================================================
+# INSTRUCCIONES PARA CONFIGURACIÓN DE MODELOS
+# =============================================================================
+#
+# 1. Descargar modelos desde Zenodo
+#
+# 2. Extraer en carpeta models/ con estructura:
+#    models/Dataset995_TZ_PZ/3d_fullres/checkpoint_best.pth
+#    models/Dataset997_csPCa/3d_fullres/checkpoint_best.pth
+#    models/Dataset998_Gland/3d_fullres/checkpoint_best.pth
+#
+# 3. Actualizar nnunet_results_path arriba con la ruta correcta
+#
+# 4. Instalar nnUNetv2:
+#    pip install nnunetv2
+#
+# =============================================================================
