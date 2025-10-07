@@ -18,7 +18,7 @@ Thank you for your interest in contributing to DeepProstate! This document provi
 ```bash
 # Fork the repository on GitHub
 # Then clone your fork
-git clone https://github.com/YOUR_USERNAME/deep-prostate.git
+git clone https://github.com/Marquita-oss/DeepProstate.git
 cd deep-prostate
 ```
 

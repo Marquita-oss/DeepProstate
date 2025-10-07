@@ -114,16 +114,16 @@ DeepProstate follows **Clean Architecture** principles with clear separation of 
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                  Presentation Layer                      │
+│                  Presentation Layer                     │
 │         (PyQt6 UI, Widgets, Visualization)              │
 ├─────────────────────────────────────────────────────────┤
-│              Application Services Layer                  │
+│              Application Services Layer                 │
 │    (Use Cases, Orchestrators, Business Logic)           │
 ├─────────────────────────────────────────────────────────┤
-│                  Domain Layer                            │
+│                  Domain Layer                           │
 │   (Entities, Value Objects, Domain Services)            │
 ├─────────────────────────────────────────────────────────┤
-│              Infrastructure Layer                        │
+│              Infrastructure Layer                       │
 │  (Repositories, External Services, Frameworks)          │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -155,7 +155,7 @@ DeepProstate follows **Clean Architecture** principles with clear separation of 
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/your-org/deep-prostate.git
+git clone https://github.com/Marquita-oss/DeepProstate.git
 cd deep-prostate
 ```
 
@@ -192,14 +192,6 @@ python -c "import PyQt6, numpy, pydicom; print('✓ Core dependencies OK')"
 ```
 
 ---
-
-## 🚀 Quick Start
-
-### Launch Application
-
-```bash
-python main.py
-```
 
 ### First Time Setup
 
@@ -273,11 +265,11 @@ DeepProstate uses **nnUNet** (no-new-Net), a self-configuring deep learning fram
 
 ```
 models/
-├── Task500_ProstateGland/
+├── Task998_ProstateGland/
 │   └── nnUNetTrainer__nnUNetPlans__3d_fullres/
-├── Task501_ProstateTZPZ/
+├── Task600_ProstateTZPZ/
 │   └── nnUNetTrainer__nnUNetPlans__3d_fullres/
-└── Task502_csPCa/
+└── Task500_csPCa/
     └── nnUNetTrainer__nnUNetPlans__3d_fullres/
 ```
 
@@ -499,41 +491,6 @@ python setup.py sdist bdist_wheel
 pip install -e .
 ```
 
----
-
-## ✅ Quality Assurance
-
-### Recent QA Audit
-
-A comprehensive QA audit was conducted on **2025-10-05**:
-
-- **24 issues** identified and **resolved**
-- **0 critical bugs** remaining
-- **100% syntax validation** passed
-- **Full English translation** of codebase
-- **Clean Architecture** compliance verified
-
-See [QA_REPORT.md](QA_REPORT.md) for detailed findings.
-
-### Code Quality Metrics
-
-- **Type Coverage**: 85%+
-- **Documentation**: 90%+ docstrings
-- **Test Coverage**: 75%+ (target: 85%)
-- **Linting Score**: A+ (Pylint 9.5/10)
-- **Security Scan**: No vulnerabilities
-
-### Medical Software Compliance
-
-- ✅ HIPAA-compliant logging
-- ✅ Patient data encryption
-- ✅ Audit trail for all operations
-- ✅ Validation reports
-- ✅ Error handling and recovery
-- ✅ System resource validation
-
----
-
 ## 🤝 Contributing
 
 We welcome contributions from the medical imaging and AI community!
@@ -580,12 +537,12 @@ For commercial licensing inquiries, please contact: [your-email@domain.com]
 If you use DeepProstate in your research, please cite:
 
 ```bibtex
-@software{deepprostate_v21,
+@software{deepprostate,
   title={DeepProstate: AI-Powered Prostate MRI Analysis Platform},
-  author={Your Name},
+  author={Ronald Marca},
   year={2025},
   version={21.0},
-  url={https://github.com/your-username/deep-prostate}
+  url={https://github.com/Marquita-oss/DeepProstate}
 }
 ```
 
@@ -597,17 +554,11 @@ If you use DeepProstate in your research, please cite:
 
 ## 📞 Support
 
-### Documentation
-
-- **User Manual**: [docs/USER_MANUAL.md](docs/USER_MANUAL.md)
-- **API Reference**: [docs/API_REFERENCE.md](docs/API_REFERENCE.md)
-- **FAQ**: [docs/FAQ.md](docs/FAQ.md)
-
 ### Community
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/deep-prostate/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/deep-prostate/discussions)
-- **Email**: support@deepprostate.org
+- **Issues**: [GitHub Issues](https://github.com/Marquita-oss/DeepProstate/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Marquita-oss/DeepProstate/discussions)
+- **Email**: rnldmarca@gmail.org
 
 ### Reporting Bugs
 
@@ -627,22 +578,6 @@ Please include:
 - **VTK Community**: For 3D visualization tools
 - **pydicom**: For DICOM handling capabilities
 - **Medical Imaging Community**: For valuable feedback
-
----
-
-## 🔄 Version History
-
-### v21.0 (Current)
-- ✨ Complete Clean Architecture refactoring
-- 🤖 nnUNet v2 integration
-- 🎨 Modern PyQt6 UI
-- 📊 Quantitative analysis panel
-- ✏️ Manual editing tools
-- 🛡️ HIPAA-compliant logging
-- 🌐 Multi-format support
-
-### v20.x
-- Legacy version (deprecated)
 
 ---
 
