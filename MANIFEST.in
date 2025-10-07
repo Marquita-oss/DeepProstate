@@ -5,7 +5,7 @@ include CONTRIBUTING.md
 include requirements.txt
 
 # Include resources
-recursive-include resources *
+recursive-include src/deepprostate/resources *
 
 # Include configuration examples
 recursive-include config *.json
