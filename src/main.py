@@ -13,28 +13,24 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 import traceback
 
-project_root = Path(__file__).parent
-sys.path.insert(0, str(project_root))
-sys.path.insert(0, str(project_root / "src" / "frameworks"))
-
 from PyQt6.QtWidgets import QApplication, QMessageBox, QDockWidget
 from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QPixmap, QFont
 
 import qdarktheme
-from src.frameworks.infrastructure.ui.themes.medical_theme import create_medical_radiology_theme
+from frameworks.infrastructure.ui.themes.medical_theme import create_medical_radiology_theme
 
-from src.frameworks.infrastructure.di.medical_service_container import (
+from frameworks.infrastructure.di.medical_service_container import (
     MedicalServiceContainer, create_medical_service_container
 )
-from src.frameworks.infrastructure.coordination.workflow_orchestrator import WorkflowOrchestrator
+from frameworks.infrastructure.coordination.workflow_orchestrator import WorkflowOrchestrator
 
-from src.frameworks.infrastructure.ui.main_window import MedicalMainWindow
+from frameworks.infrastructure.ui.main_window import MedicalMainWindow
 
-from src.frameworks.infrastructure.ui.components.medical_splash_screen import SplashScreenManager
+from frameworks.infrastructure.ui.components.medical_splash_screen import SplashScreenManager
 
-from src.frameworks.infrastructure.utils.logging_config import setup_medical_logging
-from src.frameworks.infrastructure.utils.startup_validator import MedicalSystemValidator
+from frameworks.infrastructure.utils.logging_config import setup_medical_logging
+from frameworks.infrastructure.utils.startup_validator import MedicalSystemValidator
 
 
 class DeepProstateApplication:

@@ -1,0 +1,112 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepprostate"
+version = "1.0.0"
+description = "AI-Powered Prostate MRI Analysis Platform"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "Medical Research License"}
+authors = [
+    {name = "Ronald Marca", email = "rnldmarca@gmail.com"}
+]
+maintainers = [
+    {name = "Ronald Marca", email = "rnldmarca@gmail.com"}
+]
+keywords = [
+    "medical-imaging",
+    "ai",
+    "deep-learning",
+    "prostate-cancer",
+    "nnunet",
+    "dicom",
+    "medical-ai",
+    "segmentation",
+    "mri-analysis"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Environment :: X11 Applications :: Qt",
+]
+
+dependencies = [
+    "PyQt6>=6.4.0",
+    "PyQt6-Qt6>=6.4.0",
+    "pyqtdarktheme>=2.1.0",
+    "numpy>=1.21.0,<2.0.0",
+    "scipy>=1.7.0",
+    "pydicom>=2.3.0",
+    "nibabel>=4.0.0",
+    "SimpleITK>=2.2.0",
+    "scikit-image>=0.19.0",
+    "Pillow>=9.0.0",
+    "psutil>=5.9.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "vtk>=9.2.0",
+    "h5py>=3.7.0",
+    "python-dotenv>=0.20.0",
+    "python-dateutil>=2.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "pytest-qt>=4.0.0",
+    "pylint>=2.15.0",
+    "black>=22.0.0",
+    "mypy>=0.990",
+]
+docs = [
+    "sphinx>=4.5.0",
+    "sphinx-rtd-theme>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/deep-prostate"
+Documentation = "https://github.com/your-username/deep-prostate#readme"
+Repository = "https://github.com/your-username/deep-prostate"
+Issues = "https://github.com/your-username/deep-prostate/issues"
+
+[project.scripts]
+deepprostate = "src.main:main"
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.setuptools.package-data]
+src = ["resources/**/*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --cov=src --cov-report=html --cov-report=term"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

@@ -1,0 +1,43 @@
+# Include documentation
+include README.md
+include LICENSE
+include CONTRIBUTING.md
+include requirements.txt
+
+# Include resources
+recursive-include resources *
+
+# Include configuration examples
+recursive-include config *.json
+recursive-include config *.yaml
+recursive-include config *.ini
+
+# Exclude sensitive or generated files
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude .DS_Store
+
+# Exclude medical data and models
+exclude medical_data
+exclude models
+exclude weights
+exclude studies
+exclude ai_analysis_data
+exclude ai_analysis_exports
+exclude temp
+recursive-exclude medical_data *
+recursive-exclude models *
+recursive-exclude weights *
+recursive-exclude studies *
+recursive-exclude ai_analysis_data *
+recursive-exclude ai_analysis_exports *
+recursive-exclude temp *
+
+# Exclude logs
+recursive-exclude logs *
+exclude *.log
+
+# Exclude development files
+exclude .gitignore
+exclude .git
