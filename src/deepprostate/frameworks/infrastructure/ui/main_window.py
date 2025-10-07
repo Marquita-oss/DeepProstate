@@ -351,8 +351,7 @@ class MedicalMainWindow(QMainWindow):
         logo_label.setFixedSize(190, 190)
         logo_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        import os
-        logo_path = files("deepprostate.resources.image").joinpath("logo2.svg")
+        logo_path = str(files("deepprostate.resources.image").joinpath("logo2.svg"))
 
         if Path(logo_path).exists():
             try:

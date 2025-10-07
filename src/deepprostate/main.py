@@ -57,7 +57,7 @@ class DeepProstateApplication:
             self._splash_manager = SplashScreenManager(
                 app_name="DeepProstate v20 - Clean Architecture",
                 app_version="20.0.0",
-                logo_path = files("deepprostate.resources.image").joinpath("dp2.png")
+                logo_path = str(files("deepprostate.resources.image").joinpath("dp2.png"))
             )
             self._splash_manager.show_splash(self._qt_application)
 
