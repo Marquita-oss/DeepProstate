@@ -47,7 +47,7 @@ classifiers = [
 dependencies = [
     "PyQt6>=6.4.0",
     "PyQt6-Qt6>=6.4.0",
-    "pyqtdarktheme",
+    "pyqtdarktheme>=2.1.0",
     "numpy>=1.21.0,<2.0.0",
     "scipy>=1.7.0",
     "pydicom>=2.3.0",
