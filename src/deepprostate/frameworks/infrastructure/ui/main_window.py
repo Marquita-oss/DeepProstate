@@ -3,6 +3,8 @@ import numpy as np
 from typing import Optional, Dict, Any
 from datetime import datetime
 from pathlib import Path
+from importlib.resources import files
+
 
 from PyQt6.QtWidgets import (
     QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QSplitter,
@@ -111,10 +113,17 @@ class MedicalMainWindow(QMainWindow):
 
         sidebar.image_information_panel = image_info_panel
 
-        sidebar.add_panel("ai_analysis", "AI Analysis", ai_panel, QIcon("src/deepprostate/resources/icons/ai_analysis.svg"))
-        sidebar.add_panel("manual_editing", "Manual Editing", manual_panel, QIcon("src/deepprostate/resources/icons/manual_editing.svg"))
-        sidebar.add_panel("quantitative", "Quantitative Analysis", quant_panel, QIcon("src/deepprostate/resources/icons/quantitative_analysis.svg"))
-        sidebar.add_panel("image_info", "Image Information", image_info_panel, QIcon("src/deepprostate/resources/icons/image_information.svg"))
+        icon_path = files("deepprostate.resources.icons").joinpath("ai_analysis.svg")
+        sidebar.add_panel("ai_analysis", "AI Analysis", ai_panel, QIcon(str(icon_path)))
+
+        icon_path = files("deepprostate.resources.icons").joinpath("manual_editing.svg")
+        sidebar.add_panel("manual_editing", "Manual Editing", manual_panel, QIcon(str(icon_path)))
+
+        icon_path = files("deepprostate.resources.icons").joinpath("quantitative_analysis.svg")
+        sidebar.add_panel("quantitative", "Quantitative Analysis", quant_panel, QIcon(str(icon_path)))
+
+        icon_path = files("deepprostate.resources.icons").joinpath("image_information.svg")
+        sidebar.add_panel("image_info", "Image Information", image_info_panel, QIcon(str(icon_path)))
 
         if hasattr(quant_panel, 'connect_to_mask_selector'):
             quant_panel.connect_to_mask_selector(components.central_viewer)
@@ -343,7 +352,7 @@ class MedicalMainWindow(QMainWindow):
         logo_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         import os
-        logo_path = "src/deepprostate/resources/image/logo2.svg"
+        logo_path = files("deepprostate.resources.image").joinpath("logo2.svg")
 
         if Path(logo_path).exists():
             try:

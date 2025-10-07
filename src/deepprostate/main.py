@@ -32,6 +32,7 @@ from deepprostate.frameworks.infrastructure.ui.components.medical_splash_screen 
 from deepprostate.frameworks.infrastructure.utils.logging_config import setup_medical_logging
 from deepprostate.frameworks.infrastructure.utils.startup_validator import MedicalSystemValidator
 
+from importlib.resources import files
 
 class DeepProstateApplication:
     """
@@ -56,7 +57,7 @@ class DeepProstateApplication:
             self._splash_manager = SplashScreenManager(
                 app_name="DeepProstate v20 - Clean Architecture",
                 app_version="20.0.0",
-                logo_path="src/deepprostate/resources/image/dp2.png"
+                logo_path = files("deepprostate.resources.image").joinpath("dp2.png")
             )
             self._splash_manager.show_splash(self._qt_application)
 
