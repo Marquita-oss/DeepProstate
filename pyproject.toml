@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "deepprostate"
-version = "1.3.0"
+version = "1.3.1"
 description = "AI-Powered Prostate MRI Analysis Platform"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -39,6 +39,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Operating System :: OS Independent",
     "Environment :: X11 Applications :: Qt",
 ]
@@ -78,13 +79,13 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/deep-prostate"
-Documentation = "https://github.com/your-username/deep-prostate#readme"
-Repository = "https://github.com/your-username/deep-prostate"
-Issues = "https://github.com/your-username/deep-prostate/issues"
+Homepage = "https://github.com/Marquita-oss/DeepProstate"
+Documentation = "https://github.com/Marquita-oss/DeepProstate#readme"
+Repository = "https://github.com/Marquita-oss/DeepProstate"
+Issues = "https://github.com/Marquita-oss/DeepProstate/issues"
 
 [project.scripts]
-deepprostate = "src.main:main"
+deepprostate = "main:main"
 
 [tool.setuptools]
 packages = ["src"]
@@ -94,7 +95,7 @@ src = ["resources/**/*"]
 
 [tool.black]
 line-length = 100
-target-version = ['py38', 'py39', 'py310', 'py311']
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
 include = '\.pyi?$'
 
 [tool.pytest.ini_options]
