@@ -65,9 +65,6 @@ deepprostate = "deepprostate.cli:main"
 [project.gui-scripts]
 deepprostate-gui = "deepprostate.__main__:main"
 
-[tool.setuptools]
-packages = {find = {}}
-
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["deepprostate*"]
