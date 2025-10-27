@@ -49,7 +49,7 @@ pip install deepprostate
 ### From Source
 
 ```bash
-git clone https://github.com/Marquita-oss/deepprostate.git
+git clone https://github.com/Marquita-oss/DeepProstate.git
 cd deepprostate
 pip install -e .
 ```
@@ -171,7 +171,7 @@ If you use DeepProstate in your research:
   author={Marca Ronald, Salas Rodrigo, Ponce Sebastian, Caprile Paola, Besa Cecilia},
   year={2025},
   version={1.4.0},
-  url={https://github.com/Marquita-oss/deepprostate}
+  url={https://github.com/Marquita-oss/DeepProstate}
 }
 ```
 
@@ -179,7 +179,7 @@ If you use DeepProstate in your research:
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/Marquita-oss/deepprostate/issues)
+- **Issues**: [GitHub Issues](https://github.com/Marquita-oss/DeepProstate/issues)
 - **Email**: rnldmarca@gmail.com
 
 ---
