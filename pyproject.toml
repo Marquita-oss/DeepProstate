@@ -1,114 +1,83 @@
 [build-system]
-requires = ["setuptools>=65.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "deepprostate"
-version = "1.3.8"
-description = "AI-Powered Prostate MRI Analysis Platform"
+version = "1.4.0"
+description = "AI-powered medical imaging analysis for prostate MRI"
 readme = "README.md"
-requires-python = ">=3.8"
-license = {text = "Medical Research License"}
 authors = [
     {name = "Ronald Marca", email = "rnldmarca@gmail.com"}
 ]
-maintainers = [
-    {name = "Ronald Marca", email = "rnldmarca@gmail.com"}
-]
-keywords = [
-    "medical-imaging",
-    "ai",
-    "deep-learning",
-    "prostate-cancer",
-    "nnunet",
-    "dicom",
-    "medical-ai",
-    "segmentation",
-    "mri-analysis"
-]
+license = {text = "MIT"}
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Healthcare Industry",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Medical Science Apps.",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    "Topic :: Scientific/Engineering :: Image Recognition",
-    "License :: Other/Proprietary License",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Operating System :: OS Independent",
-    "Environment :: X11 Applications :: Qt",
 ]
-
+keywords = ["medical-imaging", "prostate", "mri", "ai", "deep-learning", "nnunet"]
+requires-python = ">=3.9"
 dependencies = [
+    "numpy>=1.21.0",
     "PyQt6>=6.4.0",
-    "PyQt6-Qt6>=6.4.0",
-    "pyqtdarktheme>=0.1.7",
-    "numpy>=1.21.0,<2.0.0",
-    "scipy>=1.7.0",
-    "pydicom>=2.3.0",
-    "nibabel>=4.0.0",
     "SimpleITK>=2.2.0",
-    "scikit-image>=0.19.0",
-    "Pillow>=9.0.0",
-    "psutil>=5.9.0",
-    "torch>=2.0.0",
-    "torchvision>=0.15.0",
     "vtk>=9.2.0",
-    "h5py>=3.7.0",
-    "python-dotenv>=0.20.0",
-    "python-dateutil>=2.8.0",
+    "qdarktheme>=2.1.0",
+    "torch>=2.0.0",
+    "nnunetv2>=2.2",
+    "pydicom>=2.3.0",
+    "scipy>=1.9.0",
     "PyYAML>=6.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.0.0",
-    "pytest-cov>=3.0.0",
-    "pytest-qt>=4.0.0",
-    "pylint>=2.15.0",
-    "black>=22.0.0",
-    "mypy>=0.990",
+    "pytest>=7.0",
+    "pytest-qt>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
 ]
 docs = [
-    "sphinx>=4.5.0",
-    "sphinx-rtd-theme>=1.0.0",
+    "sphinx>=5.0",
+    "sphinx-rtd-theme>=1.2",
 ]
 
 [project.urls]
 Homepage = "https://github.com/Marquita-oss/DeepProstate"
-Documentation = "https://github.com/Marquita-oss/DeepProstate#readme"
+Documentation = "https://DeepProstate.readthedocs.io"
 Repository = "https://github.com/Marquita-oss/DeepProstate"
 Issues = "https://github.com/Marquita-oss/DeepProstate/issues"
 
 [project.scripts]
-deepprostate = "deepprostate.main:main"
+deepprostate = "deepprostate.cli:main"
+
+[project.gui-scripts]
+deepprostate-gui = "deepprostate.__main__:main"
+
+[tool.setuptools]
+packages = {find = {}}
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
+include = ["deepprostate*"]
+exclude = ["tests*", "docs*"]
 
 [tool.setuptools.package-data]
-deepprostate = ["resources/**/*"]
-
-[tool.black]
-line-length = 100
-target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
-include = '\.pyi?$'
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = "test_*.py"
-python_classes = "Test*"
-python_functions = "test_*"
-addopts = "-v --cov=src --cov-report=html --cov-report=term"
-
-[tool.mypy]
-python_version = "3.8"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = false
-ignore_missing_imports = true
+deepprostate = [
+    "resources/**/*",
+    "resources/icons/*.svg",
+    "resources/icons/*.png",
+    "resources/image/*.png",
+    "resources/image/*.svg",
+]

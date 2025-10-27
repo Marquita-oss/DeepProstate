@@ -1,19 +1,18 @@
-# DeepProstate - Python Dependencies
+# DeepProstate v1.4.0 - Python Dependencies
 # Medical Imaging Analysis Platform with AI
-# Python 3.8+ required
+# Python 3.9+ required
 
 # ============================================
 # CORE DEPENDENCIES (Required)
 # ============================================
 
 # UI Framework
-PyYAML>=6.0
 PyQt6>=6.4.0
-PyQt6-Qt6>=6.4.0
+qdarktheme>=2.1.0
 
 # Numerical Computing
-numpy>=1.21.0,<2.0.0
-scipy>=1.7.0
+numpy>=1.21.0
+scipy>=1.9.0
 
 # Medical Imaging Core
 pydicom>=2.3.0
@@ -35,8 +34,8 @@ psutil>=5.9.0
 torch>=2.0.0
 torchvision>=0.15.0
 
-# nnUNet v2 (install separately or from source)
-# pip install nnunetv2
+# nnUNet v2
+nnunetv2>=2.2
 
 # ============================================
 # 3D VISUALIZATION
@@ -58,6 +57,7 @@ h5py>=3.7.0
 
 # Logging and configuration
 python-dotenv>=0.20.0
+PyYAML>=6.0
 
 # Date/time handling
 python-dateutil>=2.8.0
