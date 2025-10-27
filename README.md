@@ -166,10 +166,10 @@ deepprostate/
 If you use DeepProstate in your research:
 
 ```bibtex
-@software{deepprostate2024,
+@software{deepprostate2025,
   title={DeepProstate: AI-Powered Prostate MRI Analysis Platform},
-  author={Marca, Ronald},
-  year={2024},
+  author={Marca Ronald, Salas Rodrigo, Ponce Sebastian, Caprile Paola, Besa Cecilia},
+  year={2025},
   version={1.4.0},
   url={https://github.com/Marquita-oss/deepprostate}
 }
