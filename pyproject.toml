@@ -78,3 +78,4 @@ deepprostate = [
     "resources/image/*.png",
     "resources/image/*.svg",
 ]
+
