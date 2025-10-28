@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "deepprostate"
-version = "1.4.2"
+version = "1.4.3"
 description = "AI-powered medical imaging analysis for prostate MRI"
 readme = "README.md"
 authors = [
     {name = "Ronald Marca, Rodrigo Salas, Sebastian Ponce, Paola Caprile, Cecilia Besa", email = "rnldmarca@gmail.com"}
 ]
 license = {text = "MIT"}
-requires-python = ">=3.9, <3.12"
+requires-python = ">=3.9"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Healthcare Industry",
@@ -23,6 +23,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Operating System :: OS Independent",
 ]
 keywords = ["medical-imaging", "prostate", "mri", "ai", "deep-learning", "nnunet"]

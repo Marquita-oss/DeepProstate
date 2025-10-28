@@ -1,4 +1,4 @@
-# DeepProstate v1.4.2 - Python Dependencies
+# DeepProstate v1.4.3 - Python Dependencies
 # Medical Imaging Analysis Platform with AI
 # Python 3.9+ required
 
