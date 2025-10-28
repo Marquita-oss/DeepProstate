@@ -8,7 +8,7 @@
 
 # UI Framework
 PyQt6>=6.4.0
-qdarktheme>=2.1.0
+pyqtdarktheme>=2.1.0
 
 # Numerical Computing
 numpy>=1.21.0
