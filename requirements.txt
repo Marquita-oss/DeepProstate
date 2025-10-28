@@ -1,4 +1,4 @@
-# DeepProstate v1.4.0 - Python Dependencies
+# DeepProstate v1.4.1 - Python Dependencies
 # Medical Imaging Analysis Platform with AI
 # Python 3.9+ required
 
@@ -8,7 +8,7 @@
 
 # UI Framework
 PyQt6>=6.4.0
-qdarktheme>=2.1.0
+qdarktheme
 
 # Numerical Computing
 numpy>=1.21.0

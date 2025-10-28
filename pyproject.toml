@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "deepprostate"
-version = "1.4.0"
+version = "1.4.1"
 description = "AI-powered medical imaging analysis for prostate MRI"
 readme = "README.md"
 authors = [
-    {name = "Ronald Marca", email = "rnldmarca@gmail.com"}
+    {name = "Ronald Marca, Rodrigo Salas, Sebastian Ponce, Paola Caprile, Cecilia Besa", email = "rnldmarca@gmail.com"}
 ]
 license = {text = "MIT"}
 classifiers = [
@@ -32,7 +32,7 @@ dependencies = [
     "PyQt6>=6.4.0",
     "SimpleITK>=2.2.0",
     "vtk>=9.2.0",
-    "qdarktheme>=2.1.0",
+    "qdarktheme",
     "torch>=2.0.0",
     "nnunetv2>=2.2",
     "pydicom>=2.3.0",
@@ -78,4 +78,3 @@ deepprostate = [
     "resources/image/*.png",
     "resources/image/*.svg",
 ]
-

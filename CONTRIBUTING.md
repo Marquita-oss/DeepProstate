@@ -342,8 +342,6 @@ For PyQt6 widgets:
 
 - **GitHub Discussions**: Ask questions and discuss ideas
 - **GitHub Issues**: Report bugs and request features
-- **Email**: support@deepprostate.org
-
 ## 🎖️ Recognition
 
 Contributors will be:

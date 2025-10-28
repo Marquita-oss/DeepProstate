@@ -196,4 +196,3 @@ If you use DeepProstate in your research:
 <p align="center">
   Made with ❤️ for the Medical Imaging Community
 </p>
-
