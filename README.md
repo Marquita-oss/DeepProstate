@@ -1,7 +1,7 @@
 # DeepProstate
 
 <p align="center">
-  <img src="deepprostate/resources/image/logo2.svg" alt="DeepProstate Logo" width="200"/>
+  <img src="https://github.com/Marquita-oss/DeepProstate/blob/main/deepprostate/resources/image/logo2.svg?raw=true" alt="DeepProstate Logo" width="200"/>
 </p>
 
 <p align="center">
